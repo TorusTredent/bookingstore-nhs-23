@@ -5,14 +5,12 @@ import com.example.bookstore23.services.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-    @Controller
-    @RequiredArgsConstructor
-    public class BookController {
+@Controller
+@RequiredArgsConstructor
+@RequestMapping("/book")
+public class BookController {
 
         private final BookService bookService;
 
@@ -22,19 +20,19 @@ import org.springframework.web.bind.annotation.RequestParam;
             return "books";
         }
 
-        @GetMapping("/book/{id}")
+        @GetMapping("/{id}")
         public String bookInfo(@PathVariable Long id, Model model){
             model.addAttribute("book", bookService.getBookById(id));
             return "book-info";
         }
 
-        @PostMapping("/book/create")
+        @PostMapping("/create")
         public String createBook(Book book){
             bookService.saveBook(book);
             return "redirect:/";
         }
 
-        @PostMapping("/book/delete/{id}")
+        @PostMapping("/delete/{id}")
         public String deleteBook(@PathVariable Long id){
             bookService.deleteBook(id);
             return "redirect:/";
