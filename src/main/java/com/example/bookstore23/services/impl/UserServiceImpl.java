@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUserName(userName);
     }
 
+
     @Override
     public ProfileDTO mapUserToProfileDto(User user1) {
         return ProfileDTO.builder()
