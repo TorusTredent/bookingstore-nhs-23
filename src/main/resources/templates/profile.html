@@ -6,12 +6,17 @@
 </head>
 <body>
 <p1>profile</p1>
-  <form th:action="@{/user/profile}" th:method="post" th:object="${user}">
-      <input type="text" th:field="*{userName} " placeholder="userName" th:value="${user.userName}">
-      <input type="password" th:field="*{password} " placeholder="pass" th:value="${user.password}">
-      <button type="submit">Изиенить</button>
+<form th:action="@{/user/profile}" th:method="post" th:object="${user}">
+    <input type="text" th:field="*{userName} " placeholder="userName" th:value="${user.userName}">
+    <input type="password" th:field="*{password} " placeholder="password" th:value="${user.password}">
+    <input type="text" th:field="*{address} " placeholder="address" th:value="${user.address}">
+    <input type="text" th:field="*{email} " placeholder="email" th:value="${user.email}">
+    <input type="text" th:field="*{mobile} " placeholder="mobile" th:value="${user.mobile}">
+    <input type="text" th:field="*{country} " placeholder="country" th:value="${user.country}">
+    <button type="submit">Изменить</button>
 
-  </form>
+
+</form>
 <p1 th:if="${message != null}" th:text="${message}"></p1>
 </body>
 </html>

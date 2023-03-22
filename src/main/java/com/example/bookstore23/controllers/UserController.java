@@ -41,12 +41,6 @@ public class UserController {
 
     }
 
-    @GetMapping("/test")
-    public String test (HttpSession session){
-        User user= User.builder()
-                .userName("Женя").password("1").build();
-        User user1=userService.save(user);
-        session.setAttribute("user",user1);
-        return "redirect:/user/profile";
-    }
+
+
 }

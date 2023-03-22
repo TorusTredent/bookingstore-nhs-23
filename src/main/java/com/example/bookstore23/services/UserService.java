@@ -8,7 +8,7 @@ public interface UserService {
 
     ProfileDTO mapUserToProfileDto(User user1);
 
-   void mapProfileDTOToUser(User user1, ProfileDTO profileDTO);
+    void mapProfileDTOToUser(User user1, ProfileDTO profileDTO);
 
     User save(User user1);
 }
