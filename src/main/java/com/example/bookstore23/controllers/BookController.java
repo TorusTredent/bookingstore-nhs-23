@@ -1,7 +1,7 @@
 package com.example.bookstore23.controllers;
 
 import com.example.bookstore23.entity.Book;
-import com.example.bookstore23.services.BookService;
+import com.example.bookstore23.services.ServiceImpl.BookServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/book")
 public class BookController {
 
-        private final BookService bookService;
+        private final BookServiceImpl bookService;
 
         @GetMapping("/")
         public String books(@RequestParam(name = "title", required = false) String title, Model model){
-            model.addAttribute("books", bookService.listBooks(title));
+           if(title != null){
+               model.addAttribute("books", bookService.findByTitle(title));
+           }else {
+               model.addAttribute("books", bookService.findAll() );
+           }
             return "books";
         }
 

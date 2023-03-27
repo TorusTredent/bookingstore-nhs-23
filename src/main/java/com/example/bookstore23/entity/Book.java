@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="books")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class Book {
 
     @Id
@@ -23,9 +25,8 @@ public class Book {
     @Column(name = "bookAuthor")
     private String bookAuthor;
     @Column(name = "price")
-    private int price;
+    private double price;
     @Column(name = "author")
     private String author;
-
 }
 
