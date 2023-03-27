@@ -11,4 +11,6 @@ public interface UserService {
     void mapProfileDTOToUser(User user1, ProfileDTO profileDTO);
 
     User save(User user1);
+
+    boolean existByUserName(String username);
 }

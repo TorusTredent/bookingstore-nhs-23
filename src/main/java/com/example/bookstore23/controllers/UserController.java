@@ -41,6 +41,46 @@ public class UserController {
 
     }
 
+    @GetMapping("/registration")
+    public String registration() {
+        return "registr";
+    }
 
+    @PostMapping("/registration")
+    public String registr(String username, String password, Model model) {
+        if (userService.existByUserName(username)) {
+            model.addAttribute("message", "Пользаватель уже существует");
+        } else {
+            userService.save(User.builder()
+                    .userName(username)
+                    .password(password)
+                    .build());
+            return "redirect:/user/auth";
+        }
+        return "registr";
+    }
 
+    @GetMapping("/auth")
+    public String authorization() {
+        return "auth";
+    }
+
+    @PostMapping("/auth")
+    public String auth(String username, String password, Model model, HttpSession mod) {
+        if (!userService.existByUserName(username)) {
+            model.addAttribute("message", "Пользователя не существует");
+        } else {
+            User user = userService.getByUserName(username);
+            if (user.getPassword().equals(password)) {
+                mod.setAttribute("user", user);
+                return "redirect:/";
+            } else {
+                model.addAttribute("message", "Данные введены не правильно");
+            }
+        }
+        return "auth";
+    }
 }
+
+
+
