@@ -8,7 +8,9 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<h4>Книги на любой вкус по всей Беларуси</h4>
+<div th:replace="/_header"></div>
+
+<h4  align="center" >Книги на любой вкус по всей Беларуси</h4>
 <div th:each="book:${books}" class="container" style="margin-top:100px;">
     <div class="row">
         <div class="col-md-3">
